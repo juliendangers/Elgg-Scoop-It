@@ -34,6 +34,7 @@
 			$p->subtype = "scoopitTopicPost";
 			$p->postid = $post->id;
 			$p->title = $post->title;
+			$p->topicid = $id;
 			$p->description = $post->htmlContent;
 			$p->smallDescription = $post->content;
 			$p->smallImg = $post->smallImageUrl;
@@ -75,6 +76,23 @@
 			return $list;
 		}
 		return false;
+	}
+	
+	function get_posts_from_topic($id, $limit = 10){
+		if(topic_exist($id)) {
+			$topic = elgg_get_entities_from_metadata(
+				array(
+					"types"=>"object",
+					"subtypes"=>"scoopitTopicPost",
+					"metadata_names" => "topicid",
+					"metadata_values"=> $id,
+					"limit"=> $limit
+				)
+			);
+			return $topic[0];
+		} else {
+			return null;	
+		}
 	}
 	
 	/***
