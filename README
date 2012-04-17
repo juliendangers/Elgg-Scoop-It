@@ -13,5 +13,5 @@ Please, follow the instructions bellow:
  - Check if php5-curl is installed
  - Create a "scoopit" directory in the /mod directory
  - Copy/Paste files into the scoopit directory
- - Configure the plugin with your consummer key, and consummer secret (use mine by default), and the topics you want to watch
+ - Configure the plugin with the topics you want to watch, the Elgg user you want to be the owner of the posts
  - Enjoy!
