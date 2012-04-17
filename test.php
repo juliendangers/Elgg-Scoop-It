@@ -14,7 +14,6 @@
 		
 		//$scoop->logout();
 		//print_r($scoop->profile(0));
-		
 		// Login
 		//$scoop->login();
 		// Get the current user
