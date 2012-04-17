@@ -3,8 +3,7 @@
 	/*
   	 * @package Elgg
 	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Michal Zacher [michal.zacher@gmail.com]
-	 * @remarks In case you need any help with this plugin, geocoding or reverse geocoding, please contact me and I may be able to help.
+	 * @author Julien Crestin [jcrestin@human-connect.com]s
 	*/
 	
 	function scoopit_init() {
