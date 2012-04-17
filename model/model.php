@@ -80,7 +80,7 @@
 	
 	function get_posts_from_topic($id, $limit = 10){
 		if(topic_exist($id)) {
-			$topic = elgg_get_entities_from_metadata(
+			$posts = elgg_get_entities_from_metadata(
 				array(
 					"types"=>"object",
 					"subtypes"=>"scoopitTopicPost",
@@ -89,7 +89,24 @@
 					"limit"=> $limit
 				)
 			);
-			return $topic[0];
+			return $posts;
+		} else {
+			return null;	
+		}
+	}
+	
+	function get_posts_count_from_topic($id){
+		if(topic_exist($id)) {
+			$topic = elgg_get_entities_from_metadata(
+				array(
+					"types"=>"object",
+					"subtypes"=>"scoopitTopicPost",
+					"metadata_names" => "topicid",
+					"metadata_values"=> $id,
+					"count"=>true
+				)
+			);
+			return $topic;
 		} else {
 			return null;	
 		}
