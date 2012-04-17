@@ -2,6 +2,7 @@
 	global $CONFIG;
 	$consumerKey = "";
 	$consumerSecret = "";
+	$curator = "";
 	
 	if ($vars['entity']->consumerKey)
 		$consumerKey = $vars['entity']->consumerKey;
@@ -9,6 +10,8 @@
 		$consumerSecret = $vars['entity']->consumerSecret;
 	if ($vars['entity']->topics)
 		$topics = $vars['entity']->topics;
+	if ($vars['entity']->curator)
+		$curator = $vars['entity']->curator;
 ?>
 <p>
 	<?php echo elgg_echo('scoopit:params:key'); ?>
@@ -24,6 +27,11 @@
 	<?php echo elgg_echo('scoopit:params:topics');?>
 
 	<?php echo elgg_view('input/text', array('internalname' => 'params[topics]','class' => ' ', 'value' => $topics)); ?>
+</p>
+<p>
+	<?php echo elgg_echo('scoopit:params:curator');?>
+
+	<?php echo elgg_view('input/text', array('internalname' => 'params[curator]','class' => ' ', 'value' => $curator)); ?>
 </p>
 <?php
 	echo elgg_view('input/hidden', array('internalname' => 'params[localurl]', 'value' => $CONFIG->site->url."pg/scoopit/validate"));
