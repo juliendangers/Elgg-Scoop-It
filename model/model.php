@@ -10,15 +10,17 @@
 			
 			$scoopit->subtype = "scoopitTopic";
 			
-			$scoopit->name = $topic->name;
+			$scoopit->title = $topic->name;
 			$scoopit->description = $topic->description;
-			$scoopit->url = $topic->url;
+			$scoopit->ScoopUrl = $topic->url;
 			$scoopit->topicid = $topic->id;
 			$scoopit->lImage = $topic->largeImageUrl;
-			$scoopit->image = $topic->image;
+			$scoopit->image = $topic->imageUrl;
 			$scoopit->tags = implode(',', $topic->tags);
 			$scoopit->shortName = $topic->shortName;
 			$scoopit->access_id = 1;
+			if(get_entity(get_plugin_setting("curator")) instanceof ElggUser)
+				$scoopit->owner_guid = get_plugin_setting("curator");
 			
 			$guid = $scoopit->save();
 			
@@ -38,6 +40,10 @@
 			$p->description = $post->htmlContent;
 			$p->smallDescription = $post->content;
 			$p->smallImg = $post->smallImageUrl;
+			$p->bigImage = $post->largeImageUrl;
+			$p->imageUrl = $post->mediumImageUrl ? $post->mediumImageUrl : $post->imageUrl;
+			$p->originalUrl = $post->url;
+			$p->scoopUrl = $post->scoopUrl;
 			$p->created = (int)($post->curationDate/1000);
 			$p->access_id = 1;
 			$guid = $p->save();
@@ -149,6 +155,21 @@
 		} else {
 			return false;	
 		}
+	}
+	
+	function get_topic_by_name($name){
+		$topic = elgg_get_entities_from_metadata(
+			array(
+				"types"=>"object",
+				"subtypes"=>"scoopitTopic",
+				"metadata_names" => "shortName",
+				"metadata_values"=> $name
+			)
+		);
+		if(count($topic)==1)
+			return $topic[0];
+		else
+			return false;
 	}
 	
 	/***
