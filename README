@@ -1,10 +1,14 @@
 ----------------------------------------------------------------------------------
+DEVELOPMENT VERSION : DO NOT USE ON A PRODUCTION SITE
+----------------------------------------------------------------------------------
 A very very simple plugin to use the Scoop.it API.
 	Links:
 		- Scoop.it Developers Home : http://www.scoop.it/dev
 		- Scoop.it API Talk : http://groups.google.com/group/scoopit-api-talk
 ----------------------------------------------------------------------------------
-
+ISSUES :
+cron trigger creates multiple topics
+----------------------------------------------------------------------------------
 
 INSTRUCTIONS
 
